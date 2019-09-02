@@ -1,0 +1,63 @@
+#include <bits/stdc++.h>
+#define ll long long int 
+using namespace std;
+class node
+{
+	public:
+	int data;
+	node*left;
+	node*right;
+};
+node *newnode(int data)
+{
+	node*tmp=new node;
+	tmp->data=data;
+	tmp->left=NULL;
+	tmp->right=NULL;
+	return tmp;;
+}
+void inorder(node*root)
+{
+	if(root==NULL) return ;
+	inorder(root->left);
+	cout<<root->data<<" ";
+	inorder(root->right);
+}
+void debug(string s)
+{
+	node *root=newnode(1);
+	//cout<<root->data<<endl;
+	//inorder(root);
+	int index=2;
+	node* i_node=root;
+	node* d_node=root;
+	for(int i=0;i<s.length();i++)
+	{
+		node *new_node=newnode(index);
+		if(s[i]=='I')
+		{
+			i_node->right=new_node;
+			i_node=new_node;
+			d_node=new_node;
+		}
+		else
+		{
+			d_node->left=new_node;
+			d_node=new_node;
+		}
+		index++;
+	}
+	inorder(root);
+	
+}
+int main() {
+	// your code goes here
+	debug("DDIDDIID");
+	return 0;
+}
+
+//https://ideone.com/cz7liy
+
+
+// happy coding 
+// keep coding 
